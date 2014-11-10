@@ -8,7 +8,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -17,7 +16,6 @@ public class MainActivity extends Activity {
     private static final String SOME_URL = "https://github.com/JBirdVegas/tests/raw/master/sampledynamicfragments-debug.apk";
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView mStatus;
-    private Button mButton;
     private BroadcastReceiver mStatusReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -39,6 +37,7 @@ public class MainActivity extends Activity {
                         Intent launch = new Intent(getApplicationContext(), FragmentLoader.class);
                         launch.setAction(Constants.ACTION_LAUNCH_FRAGMENT);
                         launch.putExtras(intent);
+                        launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(launch);
                         break;
                     default:
@@ -53,8 +52,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mStatus = (TextView) findViewById(R.id.status_textview);
-        mButton = (Button) findViewById(R.id.init_button);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.init_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent downloader = new Intent(getApplicationContext(), DexDownloaderService.class);
