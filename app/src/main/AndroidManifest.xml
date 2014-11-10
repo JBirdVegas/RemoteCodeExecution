@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jbirdvegas.remotecodeexecution" >
+    package="com.jbirdvegas.remotecodeexecution">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="com.jbirdvegas.remotecodeexecution.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.jbirdvegas.remotecodeexecution.FragmentLoader"
-            android:label="@string/title_activity_tabbed" >
-        </activity>
+            android:label="@string/title_activity_tabbed"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.jbirdvegas.remotecodeexecution.DexDownloaderService"
-            android:exported="false" >
-        </service>
+            android:exported="false" />
     </application>
-
 </manifest>
