@@ -37,8 +37,11 @@ public class MainActivity extends Activity {
                         Intent launch = new Intent(getApplicationContext(), FragmentLoader.class);
                         launch.setAction(Constants.ACTION_LAUNCH_FRAGMENT);
                         launch.putExtras(intent);
-                        launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(launch);
+                        overridePendingTransition(0, 0);
                         break;
                     default:
                         mStatus.setText("Unexpected action: " + action);
